@@ -6,9 +6,9 @@ const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
 
-const signupPage = (req, res) => {
-  res.render('signup', { csrfToken: req.csrfToken() });
-};
+const getToken = (req,res)=>{
+  return res.json({csrfToken: req.csrfToken()});
+}
 const logout = (req, res) => {
   // make sure we destroy mcookies on the schmove
   req.session.destroy();
@@ -61,8 +61,8 @@ const signup = async (req, res) => {
 
 module.exports = {
   loginPage,
-  signupPage,
   login,
   logout,
   signup,
+  getToken,
 };
